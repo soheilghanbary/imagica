@@ -1,4 +1,7 @@
 import '@/assets/app.css';
+import { BackToTop } from '@/components/(app)/back-to-top';
+import { Footer } from '@/components/(app)/footer';
+import { Header } from '@/components/(app)/header';
 import Providers from '@/components/providers';
 import { siteConfig } from '@/config/site';
 import type { Metadata } from 'next';
@@ -13,8 +16,8 @@ const font = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.title,
-    template: `%s - ${siteConfig.title}`,
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   icons: {
@@ -37,7 +40,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          <main className="container mb-4 p-4">{children}</main>
+          <Footer />
+          <BackToTop />
+        </Providers>
       </body>
     </html>
   );
