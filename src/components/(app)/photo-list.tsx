@@ -33,6 +33,7 @@ const Photo = ({ id, urls, alt_description }: any) => {
           isLoading ? 'blur-md grayscale' : 'blur-0 grayscale-0',
         )}
         onLoadingComplete={() => setLoading(false)}
+        unoptimized
       />
     </Link>
   );
