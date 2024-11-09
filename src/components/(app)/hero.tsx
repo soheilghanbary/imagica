@@ -10,8 +10,7 @@ export function Hero() {
           Imagica a Cool photo searcher from all over the world
         </h1>
         <p className="max-w-[42rem] text-muted-foreground leading-normal sm:text-xl sm:leading-8">
-          I m building a web app with Next.js 15 and open sourcing everything.
-          Follow along as we figure this out together.
+          Modern image sharing platform powered by Next.js 15.
         </p>
         <a
           target="_blank"

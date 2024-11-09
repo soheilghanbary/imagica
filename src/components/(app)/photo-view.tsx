@@ -1,11 +1,18 @@
 'use client';
 import { usePhoto } from '@/hooks/use-photo';
-import { cn, fromNow } from '@/lib/utils';
-import { DownloadIcon, ExternalLink, HeartIcon } from 'lucide-react';
+import { cn, formatViews, fromNow } from '@/lib/utils';
+import {
+  ClockIcon,
+  DownloadIcon,
+  ExternalLink,
+  EyeIcon,
+  HeartIcon,
+} from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { LoadingIcon } from '../common/icons';
 import { Button } from '../ui/button';
+import { Separator } from '../ui/separator';
 
 type Props = {
   id: string;
@@ -16,7 +23,7 @@ export function PhotoView({ id }: Props) {
   const { data, isPending } = usePhoto(id);
 
   if (isPending)
-    return <LoadingIcon className="mx-auto my-12 size-8 fill-primary" />;
+    return <LoadingIcon className="mx-auto mt-20 size-7 fill-primary" />;
 
   return (
     <section className="mx-auto max-w-xl space-y-4">
@@ -38,8 +45,30 @@ export function PhotoView({ id }: Props) {
           unoptimized
         />
       </div>
-      <p>{data.description}</p>
-      <div className="mx-auto flex items-center gap-2 rounded-full border bg-muted/40 p-2">
+      <div className="flex items-center justify-center gap-4">
+        <p className="flex items-center gap-1.5 font-medium text-muted-foreground text-xs">
+          <EyeIcon className="size-4 text-sky-500" />
+          {formatViews(data.views)}
+        </p>
+        <Separator orientation="vertical" className="h-4" />
+        <p className="flex items-center gap-1.5 font-medium text-muted-foreground text-xs">
+          <HeartIcon className="size-4 text-rose-400" />
+          {formatViews(data.likes)}
+        </p>
+        <Separator orientation="vertical" className="h-4" />
+        <p className="flex items-center gap-1.5 font-medium text-muted-foreground text-xs">
+          <DownloadIcon className="size-4 text-teal-400" />
+          {formatViews(data.downloads)}
+        </p>
+        <Separator orientation="vertical" className="h-4" />
+        <p className="flex items-center gap-1.5 font-medium text-muted-foreground text-xs">
+          <ClockIcon className="size-4 text-violet-400" />
+          {fromNow(data.created_at)}
+        </p>
+      </div>
+      <Separator orientation="horizontal" />
+      <p className="text-muted-foreground text-sm/6">{data.description}</p>
+      <div className="mx-auto flex items-center gap-2 rounded-xl border bg-muted/40 p-2 shadow-sm">
         <img
           src={data.user.profile_image.large}
           alt={data.user.name}
@@ -55,19 +84,17 @@ export function PhotoView({ id }: Props) {
           </p>
         </div>
       </div>
-      <p className="text-muted-foreground text-xs">
-        {fromNow(data.created_at)}
-      </p>
       <div className="flex items-center justify-center gap-2">
         <Button variant={'outline'} asChild>
-          <a href={data.links.download} download>
+          <a
+            download
+            target="_blank"
+            rel="noreferrer"
+            href={data.links.download}
+          >
             <DownloadIcon />
             Download
           </a>
-        </Button>
-        <Button variant={'outline'}>
-          <HeartIcon className="text-rose-500" />
-          {data.likes}
         </Button>
       </div>
     </section>

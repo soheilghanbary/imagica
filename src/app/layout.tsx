@@ -42,7 +42,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body>
         <Providers>
           <Header />
-          <main className="container mb-4 p-4">{children}</main>
+          <main className="container mb-4 min-h-screen p-4">{children}</main>
           <Footer />
           <BackToTop />
         </Providers>
