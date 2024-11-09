@@ -42,7 +42,6 @@ export function PhotoView({ id }: Props) {
             isLoading ? 'blur-md grayscale' : 'blur-0 grayscale-0',
           )}
           onLoadingComplete={() => setLoading(false)}
-          unoptimized
         />
       </div>
       <div className="flex items-center justify-center gap-4">
