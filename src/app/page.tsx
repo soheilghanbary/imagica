@@ -10,9 +10,7 @@ export default function Page() {
       <Hero />
       <TopicList />
       <Suspense>
-        <div className="my-8">
-          <SearchPhoto />
-        </div>
+        <SearchPhoto />
         <PhotoList />
       </Suspense>
     </>

@@ -15,7 +15,7 @@ export function TopicList() {
   const { data: topics, isPending } = useTopics('');
 
   return (
-    <section>
+    <>
       <h2 className="mb-4 font-bold text-lg">Topics</h2>
       <ScrollArea>
         {isPending ? (
@@ -36,6 +36,6 @@ export function TopicList() {
         )}
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-    </section>
+    </>
   );
 }

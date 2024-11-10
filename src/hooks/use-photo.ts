@@ -27,6 +27,21 @@ export const usePhotos = (query: string) => {
   });
 };
 
+export const useUserPhotos = (username: string) => {
+  return useInfiniteQuery({
+    initialPageParam: 1,
+    queryKey: ['user-photos', username],
+    queryFn: async ({ pageParam }) => {
+      const response = await fetch(
+        `https://api.unsplash.com/users/${username}/photos?page=${pageParam}&per_page=12&client_id=${API_KEY}`,
+      );
+      return await response.json();
+    },
+    getNextPageParam: (_, allPages) => allPages.length + 1,
+    getPreviousPageParam: (firstPage) => firstPage.previous_page,
+  });
+};
+
 export const usePhoto = (id: string) => {
   return useQuery({
     queryKey: ['photo', id],
