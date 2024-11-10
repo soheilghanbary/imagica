@@ -13,8 +13,8 @@ const Logo = () => (
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-border/40 border-b bg-background">
-      <nav className="container flex items-center justify-between gap-4 p-4">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background">
+      <nav className="container flex items-center justify-between gap-4 px-4 py-2">
         <Logo />
         <div className="space-x-2">
           <Button variant={'ghost'} size={'icon'}>

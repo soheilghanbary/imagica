@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  trailingSlash: true,
   env: {
     API_KEY: process.env.API_KEY,
   },

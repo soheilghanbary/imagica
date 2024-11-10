@@ -41,8 +41,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body>
         <Providers>
-          <Header />
-          <main className="container mb-4 min-h-screen p-4">{children}</main>
+          <main className="container min-h-screen border-border/40 border-x">
+            <Header />
+            <div className="p-4">{children}</div>
+          </main>
           <Footer />
           <BackToTop />
         </Providers>
