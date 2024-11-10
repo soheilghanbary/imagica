@@ -7,7 +7,6 @@ export default function Page() {
   return (
     <>
       <Hero />
-      {/* <TopicList /> */}
       <Suspense>
         <SearchPhoto />
         <PhotoList />

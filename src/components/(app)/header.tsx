@@ -17,8 +17,14 @@ export function Header() {
       <nav className="container flex items-center justify-between gap-4 px-4 py-2 md:p-4">
         <Logo />
         <div className="space-x-2">
-          <Button variant={'ghost'} size={'icon'}>
-            <GithubIcon />
+          <Button asChild variant={'ghost'} size={'icon'}>
+            <a
+              href="https://github.com/soheilghanbary/imagica"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubIcon />
+            </a>
           </Button>
           <ModeToggle />
         </div>
