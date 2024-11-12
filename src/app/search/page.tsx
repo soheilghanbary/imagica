@@ -44,11 +44,9 @@ const SearchPhotoModal = () => {
             <DialogTitle>Search Any Photo</DialogTitle>
             <DialogDescription />
           </DialogHeader>
-          <Suspense>
-            <div className="w-full">
-              <SearchPhoto />
-            </div>
-          </Suspense>
+          <div className="w-full">
+            <SearchPhoto />
+          </div>
         </DialogContent>
       </Dialog>
     );
@@ -68,11 +66,9 @@ const SearchPhotoModal = () => {
           <DrawerTitle>Search Any Photo</DrawerTitle>
           <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
-        <Suspense>
-          <div className="w-full p-4">
-            <SearchPhoto />
-          </div>
-        </Suspense>
+        <div className="w-full p-4">
+          <SearchPhoto />
+        </div>
         <DrawerFooter>
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -88,8 +84,10 @@ export default function SearchPage() {
   return (
     <div>
       <h1 className="mb-6 text-center font-black text-2xl">Search Any Photo</h1>
-      <SearchPhotoModal />
-      {query && <PhotoList />}
+      <Suspense>
+        <SearchPhotoModal />
+        {query && <PhotoList />}
+      </Suspense>
     </div>
   );
 }
