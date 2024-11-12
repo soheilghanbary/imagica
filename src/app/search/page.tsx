@@ -79,15 +79,21 @@ const SearchPhotoModal = () => {
   );
 };
 
-export default function SearchPage() {
+const SearchPhotoList = () => {
   const [query, _] = useQueryState('query');
+  return (
+    <Suspense>
+      <SearchPhotoModal />
+      {query && <PhotoList />}
+    </Suspense>
+  );
+};
+
+export default function SearchPage() {
   return (
     <div>
       <h1 className="mb-6 text-center font-black text-2xl">Search Any Photo</h1>
-      <Suspense>
-        <SearchPhotoModal />
-        {query && <PhotoList />}
-      </Suspense>
+      <SearchPhotoList />
     </div>
   );
 }
