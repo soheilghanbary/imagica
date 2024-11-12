@@ -82,10 +82,10 @@ const SearchPhotoModal = () => {
 const SearchPhotoList = () => {
   const [query, _] = useQueryState('query');
   return (
-    <Suspense>
+    <>
       <SearchPhotoModal />
       {query && <PhotoList />}
-    </Suspense>
+    </>
   );
 };
 
@@ -93,7 +93,9 @@ export default function SearchPage() {
   return (
     <div>
       <h1 className="mb-6 text-center font-black text-2xl">Search Any Photo</h1>
-      <SearchPhotoList />
+      <Suspense>
+        <SearchPhotoList />
+      </Suspense>
     </div>
   );
 }
