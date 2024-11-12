@@ -23,6 +23,7 @@ import {
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { SearchIcon } from 'lucide-react';
 import { useQueryState } from 'nuqs';
+import { Suspense } from 'react';
 
 const SearchPhotoModal = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -43,9 +44,11 @@ const SearchPhotoModal = () => {
             <DialogTitle>Search Any Photo</DialogTitle>
             <DialogDescription />
           </DialogHeader>
-          <div className="w-full">
-            <SearchPhoto />
-          </div>
+          <Suspense>
+            <div className="w-full">
+              <SearchPhoto />
+            </div>
+          </Suspense>
         </DialogContent>
       </Dialog>
     );
@@ -65,9 +68,11 @@ const SearchPhotoModal = () => {
           <DrawerTitle>Search Any Photo</DrawerTitle>
           <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
-        <div className="w-full p-4">
-          <SearchPhoto />
-        </div>
+        <Suspense>
+          <div className="w-full p-4">
+            <SearchPhoto />
+          </div>
+        </Suspense>
         <DrawerFooter>
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
