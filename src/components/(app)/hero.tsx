@@ -4,7 +4,7 @@ import { buttonVariants } from '../ui/button';
 
 export function Hero() {
   return (
-    <section className="space-y-6 lg:py-28">
+    <section className="space-y-6 py-12 lg:py-28">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
         <h1 className="font-extrabold text-3xl tracking-tight sm:text-5xl md:text-6xl/none">
           Find Photos from all over the world
@@ -17,7 +17,7 @@ export function Hero() {
         <a
           target="_blank"
           rel="noreferrer"
-          className={cn(buttonVariants({ size: 'lg' }), 'rounded-full')}
+          className={cn(buttonVariants(), 'rounded-full')}
           href="https://github.com/soheilghanbary/imagica"
         >
           <Code2Icon />

@@ -39,6 +39,12 @@ const Photo = ({ id, urls, alt_description }: any) => {
   );
 };
 
+const EmptyPhoto = () => (
+  <div className="py-20 text-center">
+    <p className="text-lg/6">👾 No photos found</p>
+  </div>
+);
+
 export function PhotoList() {
   const [query, _] = useQueryState('query');
   const { ref, inView } = useInView();
@@ -57,6 +63,8 @@ export function PhotoList() {
   }, [inView, fetchNextPage, hasNextPage]);
 
   if (isPending) return <PhotosSkeleton />;
+
+  if (!photos?.pages[0].length) return <EmptyPhoto />;
 
   return (
     <>

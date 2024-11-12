@@ -5,7 +5,7 @@ import { useDebouncedCallback } from 'use-debounce';
 
 export function SearchPhoto() {
   const [query, setQuery] = useQueryState('query', { defaultValue: '' });
-  const debounced = useDebouncedCallback((value) => {
+  const debounced = useDebouncedCallback((value: string) => {
     setQuery(value);
   }, 500);
 

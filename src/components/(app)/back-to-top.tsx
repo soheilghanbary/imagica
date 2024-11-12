@@ -26,7 +26,7 @@ export function BackToTop() {
       size={'icon'}
       variant={'secondary'}
       onClick={handleClick}
-      className={`fixed bottom-5 left-5 size-12 rounded-full transition-opacity duration-300 [&_svg]:size-5 ${
+      className={`fixed bottom-[70px] left-5 size-12 rounded-full transition-all ${
         showButton ? 'opacity-100' : 'opacity-0'
       }`}
     >
