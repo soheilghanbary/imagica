@@ -17,7 +17,7 @@ const NavigationLink = (props: NavigationLinkProps) => {
   return (
     <Link
       href={props.href}
-      className="flex flex-col items-center justify-center gap-1.5 p-2 pt-4 font-medium text-foreground/80 text-xs"
+      className="flex flex-col items-center justify-center gap-1 p-2 font-medium text-[10px] text-foreground/80"
     >
       <props.icon className="size-5" />
       <p>{props.label}</p>
