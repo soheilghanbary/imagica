@@ -16,25 +16,40 @@ const PhotosSkeleton = () => (
   </div>
 );
 
-const Photo = ({ id, urls, alt_description }: any) => {
+const Photo = ({ id, urls, alt_description, user }: any) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
     <Link
       href={`/photos/${id}`}
-      className="relative aspect-square overflow-hidden rounded-2xl bg-muted/40"
+      className="group relative aspect-square overflow-hidden rounded-2xl"
     >
       <Image
         fill
         src={urls.small}
         alt={alt_description}
         className={cn(
-          'rounded-[inherit] object-cover duration-700 ease-in-out group-hover:scale-110 group-hover:opacity-75',
+          '-z-10 rounded-[inherit] object-cover duration-500 ease-in-out group-hover:scale-110',
           isLoading ? 'blur-md grayscale' : 'blur-0 grayscale-0',
         )}
         onLoadingComplete={() => setLoading(false)}
         unoptimized
       />
+      <div className="invisible z-50 flex size-full items-end justify-start rounded-[inherit] bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 duration-300 group-hover:visible group-hover:opacity-100">
+        <div className="flex items-center gap-4 p-4">
+          <img
+            src={user.profile_image.large}
+            alt={alt_description || ''}
+            className="size-10 rounded-full object-cover"
+          />
+          <div className="flex flex-col gap-1">
+            <h2 className="line-clamp-1 font-semibold text-sm text-white">
+              {user.name}
+            </h2>
+            <p className="text-white text-xs">@{user.username}</p>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 };

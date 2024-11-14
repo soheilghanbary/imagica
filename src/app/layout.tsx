@@ -1,6 +1,7 @@
 import '@/assets/app.css';
 import { BackToTop } from '@/components/(app)/back-to-top';
 import { BottomNavigation } from '@/components/(app)/bottom-navigation';
+import { Footer } from '@/components/(app)/footer';
 import { Header } from '@/components/(app)/header';
 import Providers from '@/components/providers';
 import { siteConfig } from '@/config/site';
@@ -45,8 +46,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <main className="container">
             <div className="p-4">{children}</div>
           </main>
-          {/* <Footer /> */}
-          <BottomNavigation />
+          <Footer />
+          {/* <BottomNavigation /> */}
           <BackToTop />
         </Providers>
       </body>
